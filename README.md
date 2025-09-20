@@ -7,6 +7,8 @@ This project demonstrates a **real-world CloudOps/DevOps pipeline**:
 - GitHub Actions CI/CD to automate build + infra deployment  
 - Terraform to provision AWS EC2 & run the container  
 
+
+
 ---
 
 ## ⚙️ Tech Stack  
