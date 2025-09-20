@@ -1,3 +1,7 @@
+variable "aws_region" {
+  description = "AWS region to deploy resources"
+  default     = "us-east-1"
+}
 
 
 variable "instance_type" {
@@ -9,9 +13,3 @@ variable "docker_image" {
   default     = "nr1392/cloudops-flask:v1"
 }
 
-
-provider "aws" {
-  region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-}
