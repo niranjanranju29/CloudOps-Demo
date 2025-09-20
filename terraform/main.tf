@@ -31,13 +31,18 @@ resource "aws_instance" "cloudops_app" {
   instance_type = var.instance_type
   security_groups = [aws_security_group.web_sg.name]
 
-  user_data = <<-EOF
+user_data = <<-EOF
               #!/bin/bash
               apt-get update -y
               apt-get install -y docker.io
-              systemctl start docker
               systemctl enable docker
-              docker run -d -p 5000:5000 --restart always ${var.docker_image}
+              systemctl start docker
+              
+              # Pull latest image
+              docker pull ${var.docker_image}
+              
+              # Run container with restart policy
+              docker run -d -p 5000:5000 --name cloudops-app --restart always ${var.docker_image}
               EOF
 
   tags = {
